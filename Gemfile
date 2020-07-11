@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 # Annotate gem
 gem 'annotate', '~> 2.7', '>= 2.7.1'
 
+# Adding bootstrap
+gem 'bootstrap', '~> 4.5'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
