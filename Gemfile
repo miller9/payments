@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Annotate gem
+gem 'annotate', '~> 2.7', '>= 2.7.1'
 
 
 # Use Active Storage variant
