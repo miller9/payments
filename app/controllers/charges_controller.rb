@@ -9,9 +9,10 @@ class ChargesController < ApplicationController
   end
 
   def create
-    charge = Charge.new(charge_params)
-    if charge.save
-      redirect_to root_path
+    @charge = Charge.new(charge_params)
+    if @charge.save
+      @signature = signature(@charge)
+      render :payu
     else
       # ..Pending -> show errors
       render :new
@@ -21,6 +22,12 @@ class ChargesController < ApplicationController
   private
     def charge_params
       params.require(:charge).permit(:amount)
+    end
+
+    def signature(charge)
+      msg = "#{ENV["PAYU_API_KEY"]}~#{ENV["PAYU_MERCHANT_ID"]}~#{charge.uid}~#{charge.amount}~COP"
+      puts msg
+      Digest::SHA256.hexdigest(msg)
     end
 
 end
