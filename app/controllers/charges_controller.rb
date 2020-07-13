@@ -26,7 +26,6 @@ class ChargesController < ApplicationController
 
     def signature(charge)
       msg = "#{ENV["PAYU_API_KEY"]}~#{ENV["PAYU_MERCHANT_ID"]}~#{charge.uid}~#{charge.amount}~COP"
-      puts msg
       Digest::MD5.hexdigest(msg)
     end
 
