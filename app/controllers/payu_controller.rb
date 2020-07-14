@@ -3,7 +3,7 @@ class PayuController < ApplicationController
 
   def result
     @charge = Charge.where(uid: params[:referenceCode]).take
-    if charge.nil?
+    if @charge.nil?
       @error = "No se encontró la información del pago"
     else
       if params[:signature] != signature(@charge, params[:transactionState])
