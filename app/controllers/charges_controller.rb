@@ -11,7 +11,7 @@ class ChargesController < ApplicationController
   def create
     charge = Charge.new(charge_params)
     if charge.save
-      redirect_to root_path
+      render :epayco
     else
       # ..Pending -> show errors
       render :new
