@@ -1,8 +1,7 @@
 <script>
   var handler = ePayco.checkout.configure({
     key: '40ed9b66a2f57cad918e7f7dac23b9ca',
-    //test: true
-    // test: <%= Rails.env.production? ? false : true %>
+    //test: true     //test: <%= Rails.env.production? ? false : true %>
     test: true
   })
   var data = {
@@ -17,9 +16,8 @@
     country: "co",
     lang: "en",
 
-    // Depending on Choosed option:
-    //Onpage="false" - Standard="true"
-    external: "false",
+    // Depending on Choosed option: Onpage="false" - Standard="true"
+    external: "true",
 
     confirmation: "http://localhost:3000/epayco/confirmation",
     response: "http://localhost:3000/epayco/response",
@@ -30,5 +28,4 @@
   };
 
   handler.open(data);
-
 </script>
