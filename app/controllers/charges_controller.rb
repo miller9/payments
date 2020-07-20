@@ -9,8 +9,8 @@ class ChargesController < ApplicationController
   end
 
   def create
-    charge = Charge.new(charge_params)
-    if charge.save
+    @charge = Charge.new(charge_params)
+    if @charge.save
       render :epayco
     else
       # ..Pending -> show errors

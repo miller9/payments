@@ -1,0 +1,31 @@
+<script>
+  var handler = ePayco.checkout.configure({
+    key: '45b960805ced5c27ce34b1600b4b9f54',
+    test: true
+  })
+  var data = {
+    //Parametros compra (obligatorio)
+    name: "PRUEBAS de tienda online",
+    description: "Pago de prueba -ePayco- para online store",
+    invoice: "<%= @charge.uid %>",
+    currency: "cop",
+    amount: "<%= @charge.amount %>",
+    tax_base: "0",
+    tax: "0",
+    country: "co",
+    lang: "en",
+
+    //Onpage="false" - Standard="true"
+    external: "false",
+
+    confirmation: "http://localhost:3000/epayco/confirmation",
+    response: "http://localhost:3000/epayco/response",
+
+    //atributo deshabilitación metodo de pago
+    methodsDisable: ["TDC", "PSE", "SP", "CASH", "DP"]
+
+  };
+
+  handler.open(data);
+
+</script>
