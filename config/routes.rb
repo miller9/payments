@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # get 'epayco/result'
   # post 'epayco/confirmation'
-  get "epayco/response", to: "epayco#result"
+  post "epayco/response", to: "epayco#result"
   post "epayco/confirmation", to: "epayco#confirmation"
 
 end

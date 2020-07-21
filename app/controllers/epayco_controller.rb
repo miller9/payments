@@ -1,5 +1,5 @@
 class EpaycoController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:confirmation]
+  skip_before_action :verify_authenticity_token, only: [:result, :confirmation]
 
   def result
     url =  "https://secure.epayco.co/validation/v1/reference/#{params[:ref_payco]}"
@@ -28,8 +28,8 @@ class EpaycoController < ApplicationController
       update_payment_method(charge, params[:x_franchise])
       head :no_content
     else
-      puts "Signature: #{signature}"
-      puts "Received signature: #{params[:x_signature]}"
+      # puts "Signature: #{signature}"
+      # puts "Received signature: #{params[:x_signature]}"
       head :unprocessable_entity
     end
   end
@@ -55,7 +55,7 @@ class EpaycoController < ApplicationController
 
     def update_payment_method(charge, payment_method)
       if ["VS", "MC", "DC", "CR", "AM"].include?(payment_method)
-        charge.creditcard!
+        charge.credit_card!
       elsif payment_method == "PSE"
         charge.pse!
       else
