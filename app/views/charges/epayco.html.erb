@@ -1,7 +1,6 @@
 <script>
   var handler = ePayco.checkout.configure({
     key: '<%= ENV["EPAYCO_PUBLIC_KEY"] %>',
-    //test: true     //test: <%= Rails.env.production? ? false : true %>
     test: true
   })
   var data = {
@@ -19,8 +18,8 @@
     // Depending on Choosed option: Onpage="false" - Standard="true"
     external: "true",
 
-    confirmation: "<%= ENV["HOSTNAME"] %>/epayco/confirmation",
     response: "<%= ENV["HOSTNAME"] %>/epayco/response",
+    confirmation: "<%= ENV["HOSTNAME"] %>/epayco/confirmation",
 
     //atributo deshabilitación metodo de pago
     methodsDisable: ["TDC", "PSE", "SP", "CASH", "DP"]
