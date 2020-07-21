@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root 'charges#index'
+  resources :charges, only: [:new, :create]
+
+  # get 'epayco/result'
+  # post 'epayco/confirmation'
+  post "epayco/response", to: "epayco#result"
+  post "epayco/confirmation", to: "epayco#confirmation"
+
 end
