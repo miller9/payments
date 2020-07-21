@@ -6,7 +6,12 @@ class EpaycoController < ApplicationController
     response = HTTParty.get(url)
 
     parsed = JSON.parse(response.body)
-    puts parsed
+    if parsed["success"]
+      @data = parsed["data"]
+      @charge = Charge.where(uid: @data["x_id_invoice"]).take
+    else
+      @error = "No se pudo consultar la información"
+    end
   end
 
   def confirmation
